@@ -69,8 +69,7 @@
       gtag('config', 'YOUR_GA_MEASUREMENT_ID'); // REPLACE WITH YOUR ACTUAL GA4 ID
     </script>
     
-    <!-- Tableau Embedding API Script -->
-    <script type='module' src='https://10ay.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
+    <!-- Tableau Embedding API Script - REMOVED for Spreadsheet reliability -->
 </head>
 <body class="text-slate-700">
 
@@ -281,20 +280,23 @@
 
                     <!-- Contract Status Dashboard Tab Content -->
                     <div id="tab-contracts" class="tab-content hidden animate-fade-in">
-                        <h3 class="text-lg font-bold text-slate-900 mb-4 text-teal-700">Contract Status Dashboard (Live Tableau Embed)</h3>
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 text-teal-700">Contract Status Dashboard (External Spreadsheet Embed)</h3>
                         <p class="text-sm text-slate-600 mb-4">
-                            This dashboard provides real-time visibility into the status of all active external vendor contracts. Use this to track progress through Phase 5 and 6 (SOW Review and Signature).
+                            This live spreadsheet provides visibility into the status of all active external vendor contracts (Phase 4-6). Please ensure the spreadsheet is set to be **publicly accessible/viewable** to avoid loading errors.
                         </p>
-                        <div class="h-[70vh] bg-slate-100 rounded-lg overflow-hidden border border-slate-300">
-                            <!-- Tableau Dashboard Component (API Embed) -->
-                            <tableau-viz 
-                                id='tableau-viz-contracts' 
-                                src='https://10ay.online.tableau.com/t/udacitybi/views/ExternalVendorContractTracker/ContractDashboard/1c1b871d-2077-4ff7-aea4-13d5f8aa66ce/6687af21-7e1c-401d-8c6a-1fb9e35ee605' 
-                                width='100%' 
-                                height='100%' 
-                                hide-tabs 
-                                toolbar='bottom'
-                            ></tableau-viz>
+                        <div class="h-[70vh] bg-white rounded-lg overflow-hidden border border-slate-300">
+                            <!-- Placeholder Spreadsheet Embed -->
+                            <iframe 
+                                src="https://docs.google.com/spreadsheets/d/1-L0pbLpwhLERsBXeHXLC76gjsJ70TR2QbP7NoyNSPPc/edit?usp=sharing" 
+                                class="w-full h-full" 
+                                frameborder="0" 
+                                allowfullscreen="true"
+                            ></iframe>
+                            
+                            <!-- Placeholder Fallback: Removed the complex Tableau fallback as IFRAME issues are simpler. -->
+                            <div class="hidden">
+                                <!-- The old Tableau fallback structure is removed for spreadsheet simplicity -->
+                            </div>
                         </div>
                     </div>
 
@@ -359,7 +361,7 @@
             activeTab: 'csm',
             checklist: new Array(checklistItems.length).fill(false)
         };
-
+        
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
             renderPhaseList();
