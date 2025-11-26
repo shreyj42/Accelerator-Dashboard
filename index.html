@@ -59,6 +59,18 @@
          4. Checklist (JS Interactive Form): Goal: Inform/Verify. Interactive inputs. Justification: Reinforces the mandatory nature of the checklist items.
          CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
     -->
+
+    <!-- Google Analytics 4 (GA4) Tracking Code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_GA_MEASUREMENT_ID'); // REPLACE WITH YOUR ACTUAL GA4 ID
+    </script>
+    
+    <!-- Tableau Embedding API Script -->
+    <script type='module' src='https://10ay.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
 </head>
 <body class="text-slate-700">
 
@@ -274,14 +286,15 @@
                             This dashboard provides real-time visibility into the status of all active external vendor contracts. Use this to track progress through Phase 5 and 6 (SOW Review and Signature).
                         </p>
                         <div class="h-[70vh] bg-slate-100 rounded-lg overflow-hidden border border-slate-300">
-                            <!-- Tableau Dashboard IFrame -->
-                            <iframe 
-                                src="https://10ay.online.tableau.com/t/udacitybi/views/ExternalVendorContractTracker/ContractDashboard/1c1b871d-2077-4ff7-aea4-13d5f8aa66ce/6687af21-7e1c-401d-8c6a-1fb9e35ee605?:embed=yes&:linktarget=_parent&:display_count=no&:showVizHome=no" 
-                                width="100%" 
-                                height="100%" 
-                                frameborder="0" 
-                                allowfullscreen="true"
-                            ></iframe>
+                            <!-- Tableau Dashboard Component (API Embed) -->
+                            <tableau-viz 
+                                id='tableau-viz-contracts' 
+                                src='https://10ay.online.tableau.com/t/udacitybi/views/ExternalVendorContractTracker/ContractDashboard/1c1b871d-2077-4ff7-aea4-13d5f8aa66ce/6687af21-7e1c-401d-8c6a-1fb9e35ee605' 
+                                width='100%' 
+                                height='100%' 
+                                hide-tabs 
+                                toolbar='bottom'
+                            ></tableau-viz>
                         </div>
                     </div>
 
