@@ -139,22 +139,25 @@
 
         <!-- Role-Specific SOPs -->
         <section>
-            <h2 class="text-2xl font-bold text-slate-900 mb-4">Standard Operating Procedures by Role</h2>
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">Action Center</h2>
             <p class="text-slate-600 mb-6">
-                Specific actions required by each stakeholder to maintain the SLA and ensure traceability.
+                Use the tabs below to view team-specific SOPs or check the contracts status dashboard.
             </p>
 
             <div class="bg-white rounded-xl shadow-sm border border-slate-200">
                 <!-- Tabs -->
-                <div class="flex border-b border-slate-200">
-                    <button class="tab-btn px-6 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 focus:outline-none flex-1 sm:flex-none active" onclick="switchTab('csm')">
-                        CSM / Sales
+                <div class="flex border-b border-slate-200 overflow-x-auto no-scrollbar">
+                    <button class="tab-btn px-6 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 focus:outline-none flex-shrink-0 active" onclick="switchTab('csm')">
+                        CSM / Sales SOPs
                     </button>
-                    <button class="tab-btn px-6 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 focus:outline-none flex-1 sm:flex-none" onclick="switchTab('accelerator')">
-                        Accelerator Delivery Team
+                    <button class="tab-btn px-6 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 focus:outline-none flex-shrink-0" onclick="switchTab('accelerator')">
+                        Accelerator Delivery SOPs
                     </button>
-                    <button class="tab-btn px-6 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 focus:outline-none flex-1 sm:flex-none" onclick="switchTab('finance')">
-                        Mentor Success / Legal
+                    <button class="tab-btn px-6 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 focus:outline-none flex-shrink-0" onclick="switchTab('finance')">
+                        Mentor Success / Legal SOPs
+                    </button>
+                    <button class="tab-btn px-6 py-4 text-sm font-medium text-slate-500 hover:text-slate-700 focus:outline-none flex-shrink-0" onclick="switchTab('contracts')">
+                        Contract Status Dashboard
                     </button>
                 </div>
 
@@ -264,6 +267,24 @@
                         </div>
                     </div>
 
+                    <!-- Contract Status Dashboard Tab Content -->
+                    <div id="tab-contracts" class="tab-content hidden animate-fade-in">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 text-teal-700">Contract Status Dashboard (Live Tableau Embed)</h3>
+                        <p class="text-sm text-slate-600 mb-4">
+                            This dashboard provides real-time visibility into the status of all active external vendor contracts. Use this to track progress through Phase 5 and 6 (SOW Review and Signature).
+                        </p>
+                        <div class="h-[70vh] bg-slate-100 rounded-lg overflow-hidden border border-slate-300">
+                            <!-- Tableau Dashboard IFrame -->
+                            <iframe 
+                                src="https://10ay.online.tableau.com/t/udacitybi/views/ExternalVendorContractTracker/ContractDashboard/1c1b871d-2077-4ff7-aea4-13d5f8aa66ce/6687af21-7e1c-401d-8c6a-1fb9e35ee605?:embed=yes&:linktarget=_parent&:display_count=no&:showVizHome=no" 
+                                width="100%" 
+                                height="100%" 
+                                frameborder="0" 
+                                allowfullscreen="true"
+                            ></iframe>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -332,6 +353,9 @@
             renderPhaseDetail(state.currentPhase);
             renderChecklist();
             initChart();
+
+            // Set default active tab on load
+            switchTab('csm');
         });
 
         // --- RENDER FUNCTIONS ---
@@ -390,13 +414,13 @@
 
         // --- TAB LOGIC ---
         window.switchTab = function(tabName) {
+            state.activeTab = tabName;
+            
             // Update buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-teal-600', 'text-teal-700');
-                if(btn.textContent.toLowerCase().includes(tabName === 'csm' ? 'csm' : tabName === 'accelerator' ? 'accelerator delivery' : 'mentor success')) {
-                    btn.classList.add('active', 'border-teal-600', 'text-teal-700');
-                }
+                btn.classList.remove('active');
             });
+            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
 
             // Hide all content
             document.querySelectorAll('.tab-content').forEach(content => {
