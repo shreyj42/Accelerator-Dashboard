@@ -60,14 +60,7 @@
          CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
     -->
 
-    <!-- Google Analytics 4 (GA4) Tracking Code -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'YOUR_GA_MEASUREMENT_ID'); // REPLACE WITH YOUR ACTUAL GA4 ID
-    </script>
+   
     
     <!-- Tableau Embedding API Script - REMOVED for Spreadsheet reliability -->
 </head>
@@ -279,29 +272,7 @@
                     </div>
 
                     <!-- Contract Status Dashboard Tab Content -->
-                    <div id="tab-contracts" class="tab-content hidden animate-fade-in">
-                        <h3 class="text-lg font-bold text-slate-900 mb-4 text-teal-700">Contract Status Dashboard (External Spreadsheet Embed)</h3>
-                        <p class="text-sm text-slate-600 mb-4">
-                            This live spreadsheet provides visibility into the status of all active external vendor contracts (Phase 4-6). Please ensure the spreadsheet is set to be **publicly accessible/viewable** to avoid loading errors.
-                        </p>
-                        <div class="h-[70vh] bg-white rounded-lg overflow-hidden border border-slate-300">
-                            <!-- Placeholder Spreadsheet Embed -->
-                            <iframe 
-                                src="https://docs.google.com/spreadsheets/d/1-L0pbLpwhLERsBXeHXLC76gjsJ70TR2QbP7NoyNSPPc/edit?usp=sharing" 
-                                class="w-full h-full" 
-                                frameborder="0" 
-                                allowfullscreen="true"
-                            ></iframe>
-                            
-                            <!-- Placeholder Fallback: Removed the complex Tableau fallback as IFRAME issues are simpler. -->
-                            <div class="hidden">
-                                <!-- The old Tableau fallback structure is removed for spreadsheet simplicity -->
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+                  
         </section>
 
         <!-- Footer / Communication Plan -->
